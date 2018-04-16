@@ -2,6 +2,7 @@
 
 app
     .controller('homepageIndex',function($scope){
-        $scope.title = 'toto pipi';
-
-    });
+    })
+    .controller('homepageLogin',function($scope){
+    })
+    ;
