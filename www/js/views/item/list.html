@@ -1,0 +1,22 @@
+<ion-view>
+    <ion-content padding="false">
+            
+        <div class="list">
+            <a ng-repeat="item in items" class="item item-thumbnail-left" href="#/item/{{ item.id }}">
+                
+                <img ng-src="{{ item.image }}">
+                
+                <h2>{{ item.title }}</h2>
+                <p>{{item.description}}</p>
+                <p>{{item.user.username}}</p>
+                <button ng-click="delete(item.id)">Supprimer</button>
+                
+            </a>            
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-assertive">
+        <div class="buttons" ng-click="addAnnounce()">
+          <button class="button">Ajouter une annonce</button>
+        </div>
+      </ion-footer-bar>
+</ion-view>

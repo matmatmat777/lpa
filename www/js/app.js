@@ -17,6 +17,6 @@ var app = angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-    $location.path('/');
+    $location.path('/item/list');
   });
 });

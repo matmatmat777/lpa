@@ -17,4 +17,16 @@ app.config(function($stateProvider){
             templateUrl: 'js/views/homepage/login.html',
             controller: 'homepageLogin'
         })
+        .state('itemList', {
+            cache: cacheActive,
+            url: '/item/list',
+            templateUrl: 'js/views/item/list.html',
+            controller: 'itemList'
+        })
+        .state('itemOne', {
+            cache: cacheActive,
+            url: '/item/:id',
+            templateUrl: 'js/views/item/one.html',
+            controller: 'itemOne'
+        })
 });
