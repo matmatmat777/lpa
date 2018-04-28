@@ -1,6 +1,19 @@
 'use strict';
 
-var app = angular.module('starter', ['ionic'])
+var app = angular.module('starter', ['ionic', 'firebase'])
+
+.config(function() {
+  var config = {
+    apiKey: "AIzaSyDdh8QDCLsykPK98ITpIgHIiDLtBVpsT4E",
+    authDomain: "fab-s-5d196.firebaseapp.com",
+    databaseURL: "https://fab-s-5d196.firebaseio.com",
+    projectId: "fab-s-5d196",
+    storageBucket: "fab-s-5d196.appspot.com",
+    messagingSenderId: "508242168685"
+  };
+firebase.initializeApp(config);
+  
+  })
 
 .run(function($ionicPlatform, $location) {
   $ionicPlatform.ready(function() {
