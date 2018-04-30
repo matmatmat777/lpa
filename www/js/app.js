@@ -2,7 +2,7 @@
 
 var app = angular.module('starter', ['ionic', 'firebase'])
 
-.config(function() {
+/* .config(function() {
   var config = {
     apiKey: "AIzaSyDdh8QDCLsykPK98ITpIgHIiDLtBVpsT4E",
     authDomain: "fab-s-5d196.firebaseapp.com",
@@ -13,7 +13,7 @@ var app = angular.module('starter', ['ionic', 'firebase'])
   };
 firebase.initializeApp(config);
   
-  })
+  }) */
 
 .run(function($ionicPlatform, $location) {
   $ionicPlatform.ready(function() {
