@@ -23,10 +23,4 @@ app.config(function($stateProvider){
             templateUrl: 'js/views/item/list.html',
             controller: 'itemList'
         })
-        .state('itemOne', {
-            cache: cacheActive,
-            url: '/item/:id',
-            templateUrl: 'js/views/item/one.html',
-            controller: 'itemOne'
-        })
 });
