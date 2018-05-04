@@ -16,8 +16,15 @@ app
         var rootRef = firebase.database().ref();
         $scope.items = $firebaseArray(rootRef.child('items'));
 
+        ///$scope.currentItem = 1000;
+console.log("id",$scope.items.length);   
+
+
+var max = 0;
         $scope.addItem = function () {
-            var newItem = $scope.newItem = { Uid:"", id: $scope.items.length, title: "", description: "" };
+           // console.log("id",maxId);  
+           
+            var newItem = $scope.newItem = { Uid:"", id: max, title: "", description: "" };
             var itemTemplate = '<input type="text" placeholder="titre" ng-model="newItem.title"><br/><input type="text" placeholder="username" ng-model="newItem.user.username"><br/><textarea ng-model="newItem.description" placeholder="description"></textarea>';
 
             var myPopup = $ionicPopup.show({
@@ -35,7 +42,12 @@ app
 
                             } else {
                                 $scope.items.$add(newItem);
+                                var id = rootRef.key;
+                                console.log("added record with id " + id);
+                                $scope.items.$indexFor(id); // returns location in the array
                                 console.log("new item add");
+                                max = max + 1;
+                                console.log("max",max);
                                 
                             }
 
@@ -53,13 +65,20 @@ app
             rootRef.child('items').child(id).remove();
             console.log("delet",id);
         };
-        $scope.currentItem = 1000;
+
+        
         $scope.getdetails = function(id){
-            $scope.currentItem = id;
+          //  console.log("itemid",id);
+            $scope.currentItem = id;//$firebaseArray(rootRef.child('items'));
+           console.log("itemid",id);//$firebaseArray(rootRef.child('items')));
+            
             $scope.modal.show();
+         //   console.log("itemid",id);
+            
             
           };
           $ionicModal.fromTemplateUrl('js/views/item/one.html', {
+
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
