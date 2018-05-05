@@ -16,11 +16,10 @@ app
         var rootRef = firebase.database().ref();
         $scope.items = $firebaseArray(rootRef.child('items'));
 
-        ///$scope.currentItem = 1000;
-console.log("id",$scope.items.length);   
+        console.log("id",$scope.items.length);   
 
 
-var max = 0;
+        var max = 0;
         $scope.addItem = function () {
            // console.log("id",maxId);  
            
@@ -42,10 +41,6 @@ var max = 0;
 
                             } else {
                                 $scope.items.$add(newItem);
-                                var id = rootRef.key;
-                                console.log("added record with id " + id);
-                                $scope.items.$indexFor(id); // returns location in the array
-                                console.log("new item add");
                                 max = max + 1;
                                 console.log("max",max);
                                 
@@ -69,11 +64,11 @@ var max = 0;
         
         $scope.getdetails = function(id){
           //  console.log("itemid",id);
-            $scope.currentItem = id;//$firebaseArray(rootRef.child('items'));
-           console.log("itemid",id);//$firebaseArray(rootRef.child('items')));
+            $scope.currentItem = id;
+           console.log("itemid",id);
             
             $scope.modal.show();
-         //   console.log("itemid",id);
+         
             
             
           };

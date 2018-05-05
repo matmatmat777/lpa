@@ -2,7 +2,7 @@
     <ion-content padding="false">
             
         <div class="list">
-            <a ng-repeat="item in items" item="item" ng-click="getdetails({{item.id}})"class="item item-thumbnail-left" >
+            <a ng-repeat="item in items track by $index" item="item" ng-click="getdetails($index)" item="item" ng-click="getdetails({{item.id}})"class="item item-thumbnail-left" >
                 
                 <img ng-src="{{ item.image }}">
                 
