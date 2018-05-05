@@ -1,19 +1,12 @@
-<ion-view>
-    <ion-content padding="false">
-        <div class="list card">
-            
-              <div class="item item-avatar">
-                <h2>{{ items.user.username }}</h2>
-                <p> {{ items.title }}</p>
-              </div>
-            
-              <div class="item item-body">
-                <img class="full-image" ng-src="{{ items.image }}">
-                <p>{{ items.description }}</p>
-                
+<ion-modal-view>
+  <ion-header-bar>
+      <button ng-click="closeModal()">close</button>
+      <h1 class="title">My Modal title</h1>
+    </ion-header-bar>
+    <ion-content>
 
-              </div>
-            
-            </div>
+      <p>{{items[currentItem].title}}</p>
+      <h3>{{items[currentItem].description}}</h3>
+      <h3>{{items[currentItem].user.username}}</h3>
     </ion-content>
-</ion-view>
+</ion-modal-view>
