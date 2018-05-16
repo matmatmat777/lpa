@@ -3,6 +3,6 @@
 app
     .controller('homepageIndex',function($scope){
     })
-    .controller('homepageLogin',function($scope){
+    .controller('homepageSignUp',function($scope){
     })
     ;

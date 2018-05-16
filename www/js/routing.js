@@ -13,9 +13,9 @@ app.config(function($stateProvider){
         })
         .state('login', {
             cache: cacheActive,
-            url: '/login',
-            templateUrl: 'js/views/homepage/login.html',
-            controller: 'homepageLogin'
+            url: '/signUp',
+            templateUrl: 'js/views/homepage/signUp.html',
+            controller: 'homepageSignUp'
         })
         .state('itemList', {
             cache: cacheActive,
