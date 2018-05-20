@@ -8,16 +8,16 @@
                 <form>
                     <div class="list">
                         <label class="item item-input">
-                            <input type="text" placeholder="Nom d'utilisateur">
+                            <input type="text" placeholder="e-mail" ng-model="user.email">
                         </label>
                         <label class="item item-input">
-                            <input type="password" placeholder="Mot de passe">
+                            <input type="password" placeholder="Mot de passe" ng-model="user.password">
                         </label>
                     </div>
                 </form>
             </div>
         <div class="item item-divider text-center">
-            <a href="" class="button button-positive button-small">
+            <a href="" class="button button-positive button-small" ng-click="signIn(user)">
                 Identifiez moi vite
             </a>
             <a href="" class="button button-energized button-small">

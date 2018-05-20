@@ -3,16 +3,6 @@
 app
     .controller('itemList', function ($scope, $ionicPopup, $http, $firebaseArray, $ionicModal) {
 
-        var config = {
-            apiKey: "AIzaSyDdh8QDCLsykPK98ITpIgHIiDLtBVpsT4E",
-            authDomain: "fab-s-5d196.firebaseapp.com",
-            databaseURL: "https://fab-s-5d196.firebaseio.com",
-            projectId: "fab-s-5d196",
-            storageBucket: "fab-s-5d196.appspot.com",
-            messagingSenderId: "508242168685"
-        };
-        firebase.initializeApp(config);
-
         var rootRef = firebase.database().ref();
         $scope.items = $firebaseArray(rootRef.child('items'));
 

@@ -17,6 +17,6 @@ var app = angular.module('starter', ['ionic', 'firebase'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-    $location.path('/item/list');
+    $location.path('/');
   });
 });

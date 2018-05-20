@@ -2,14 +2,14 @@
     <ion-content padding="false">
         <div class="list list-inset">
             <label class="item item-input">
-              <input type="text" ng-model="userEmail" placeholder="e-mail">
+              <input type="text" ng-model="newUser.email" placeholder="e-mail">
             </label>
             <label class="item item-input">
-              <input type="text" ng-model="userPassword" placeholder="Password">
+              <input type="text" ng-model="newUser.password" placeholder="Password">
             </label>
           </div>
           <div class="item item-divider text-center">
-            <a href="" class="button button-positive button-small">
+            <a href="" class="button button-positive button-small" ng-click="registerUser(newUser)">
                 Enregistrez
             </a>
         </div>
