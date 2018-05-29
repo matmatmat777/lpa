@@ -1,12 +1,30 @@
 <ion-modal-view>
   <ion-header-bar>
       <button ng-click="closeModal()">close</button>
-      <h1 class="title">My Modal title</h1>
+      <h1 class="title">{{items[currentItem].brand}} {{items[currentItem].model}}</h1>
     </ion-header-bar>
     <ion-content>
+      <div class="row">
+        <div class="col-offset-10 col-30">
+          <h2>{{ items[currentItem].price }}€</h2>
 
-      <p>{{items[currentItem].title}}</p>
-      <h3>{{items[currentItem].description}}</h3>
-      <h3>{{items[currentItem].user.username}}</h3>
+        </div>
+        <div class="col-offset-10 col-30">
+            <h2>{{ items[currentItem].kilometers }}Km</h2>
+  
+          </div>
+
+      </div>
+      <div class="row">
+          <div class="col-offset-10 col-80">
+        <p>{{ items[currentItem].description }}</p>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-offset-10 col-80">
+            <h3>{{items[currentItem].user.username}} {{items[currentItem].user.phone}}</h3>
+        </div>
+      </div>
+      
     </ion-content>
 </ion-modal-view>

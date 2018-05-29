@@ -5,10 +5,14 @@
             <ion-item class="item-icon-right" ng-repeat="item in items track by $index" item="item" ng-click="getdetails($index)" class="item item-thumbnail-left" >
 
                 <img ng-src="{{ item.image }}">
+                <h2>{{ item.brand }}  {{ item.model }}</h2>
+                <h2>{{ item.price }}€ {{ item.kilometers }}Km</h2>
+                <!-- <h2>{{ item.description }}</h2> -->
+                <h2>{{item.user.username}} {{item.user.phone}}</h2>
                 
-                <h2>{{ item.title }}</h2>
+<!--                 <h2>{{ item.title }}</h2>
                 <h2>{{ item.description }}</h2>
-                <p>{{item.user.username}}</p>               
+                <p>{{item.user.username}}</p>     -->           
                 <i class="icon ion-md-trash"></i>
                 <ion-option-button ng-click="delete(item.$id)">Supprimer</ion-option-button>
             </ion-item>            
