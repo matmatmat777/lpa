@@ -1,18 +1,18 @@
 <ion-view>
     <ion-content padding="false">
             
-        <div class="list">
-            <a ng-repeat="item in items track by $index" item="item" ng-click="getdetails($index)" item="item" ng-click="getdetails({{item.id}})"class="item item-thumbnail-left" >
-                
+        <ion-list>
+            <ion-item class="item-icon-right" ng-repeat="item in items track by $index" item="item" ng-click="getdetails($index)" class="item item-thumbnail-left" >
+
                 <img ng-src="{{ item.image }}">
                 
                 <h2>{{ item.title }}</h2>
                 <h2>{{ item.description }}</h2>
-                <p>{{item.user.username}}</p>
-                <button ng-click="delete(item.$id)">Supprimer</button>
-                
-            </a>            
-        </div>
+                <p>{{item.user.username}}</p>               
+                <i class="icon ion-md-trash"></i>
+                <ion-option-button ng-click="delete(item.$id)">Supprimer</ion-option-button>
+            </ion-item>            
+        </ion-list>
     </ion-content>
     <ion-footer-bar class="bar-assertive">
         <div class="buttons" ng-click="addItem(newItem)">
