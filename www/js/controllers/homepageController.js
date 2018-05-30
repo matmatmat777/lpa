@@ -23,12 +23,26 @@ app.factory("Auth", ["$firebaseAuth",
             console.log(error);
             // ...
           });
-       /*  auth.$signInAnonymously().then(function(firebaseUser) {
-          $scope.firebaseUser = firebaseUser;
+      };
+
+/*       $scope.signOut = function() {
+        // Sign out
+        firebase.auth().signOut();
+      }; */
+
+      $scope.deleteUser = function() {
+        console.log("click del");
+        $scope.message = null;
+        $scope.error = null;
+  
+        // Delete the currently signed-in user
+        Auth.$deleteUser().then(function() {
+          $scope.message = "User deleted";
         }).catch(function(error) {
           $scope.error = error;
-        }); */
+        });
       };
+
     }
   ]);
 //});
@@ -44,6 +58,8 @@ app.controller('homepageSignUp', ['$scope', 'Auth', function ($scope, Auth) {
                 console.log("error");
             });
     };
+
+   
 }
 
 ]);

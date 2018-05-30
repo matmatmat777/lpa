@@ -11,13 +11,13 @@ app
 
         var max = 0;
         $scope.addItem = function () {
-           // console.log("id",maxId);  
+           //console.log("id",maxId);  
            
             /* var newItem = $scope.newItem = { Uid:"", id: max, title: "", description: "" };
             var itemTemplate = '<input type="text" placeholder="titre" ng-model="newItem.title"><br/><input type="text" placeholder="username" ng-model="newItem.user.username"><br/><textarea ng-model="newItem.description" placeholder="description"></textarea>';
  */
 
-var newItem = $scope.newItem = { Uid:"", id: max, brand: "", model: "", price:"", description: "" };
+var newItem = $scope.newItem = { id: max, brand: "", model: "", price:"", description: "" };
 var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.brand"><input type="text" placeholder="modele" ng-model="newItem.model"><input type="text" placeholder="prix" ng-model="newItem.price"><input type="text" placeholder="prix" ng-model="newItem.kilometers"><br/><input type="text" placeholder="username" ng-model="newItem.user.username"><input type="text" placeholder="télephone" ng-model="newItem.user.phone"><br/><textarea ng-model="newItem.description" placeholder="description"></textarea>';
 
             var myPopup = $ionicPopup.show({
