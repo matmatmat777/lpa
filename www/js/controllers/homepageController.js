@@ -47,13 +47,14 @@ app.factory("Auth", ["$firebaseAuth",
   ]);
 //});
 
-app.controller('homepageSignUp', ['$scope', 'Auth', function ($scope, Auth) {
+app.controller('homepageSignUp', ['$scope', 'Auth','$window', function ($scope, Auth, $window) {
     var newUser = $scope.newUser = { email: "", password: "" };
 
     $scope.registerUser = function () {
         Auth.$createUserWithEmailAndPassword(newUser.email, newUser.password)
             .then(function (firebaseUser) {
                 console.log("yas", firebaseUser);
+                $window.location.href = '/#/item/list';
             }).catch(function (error) {
                 console.log("error");
             });
