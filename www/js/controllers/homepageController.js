@@ -8,14 +8,15 @@ app.factory("Auth", ["$firebaseAuth",
 
 //app.controller('homepageIndex', function ($scope) {
 
-    app.controller('homepageIndex', ['$scope', 'Auth','$window', function($scope, Auth, $window) {
+    app.controller('homepageIndex', ['$scope', 'Auth','$window' ,'$location', '$state', function($scope, Auth, $window,$location, $state) {
         var user = $scope.user = { email: "", password: "" };
       $scope.signIn = function() {
        // $scope.firebaseUser = null;
         $scope.error = null;
         Auth.$signInWithEmailAndPassword(user.email, user.password).then(function(firebaseUser) {
             $scope.firebaseUser = firebaseUser;
-            $window.location.href = '/#/item/list';
+            $state.go('itemList');
+            // $window.location.href = '/#/item/list';
           }).catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -47,14 +48,15 @@ app.factory("Auth", ["$firebaseAuth",
   ]);
 //});
 
-app.controller('homepageSignUp', ['$scope', 'Auth','$window', function ($scope, Auth, $window) {
+app.controller('homepageSignUp', ['$scope', 'Auth','$window', '$state' ,function ($scope, Auth, $window, $state) {
     var newUser = $scope.newUser = { email: "", password: "" };
 
     $scope.registerUser = function () {
         Auth.$createUserWithEmailAndPassword(newUser.email, newUser.password)
             .then(function (firebaseUser) {
                 console.log("yas", firebaseUser);
-                $window.location.href = '/#/item/list';
+                //$window.location.href = '/#/item/list';
+                $state.go('itemList');
             }).catch(function (error) {
                 console.log("error");
             });

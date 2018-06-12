@@ -2,11 +2,11 @@
 
 var cacheActive = false;
 
-app.config(function($stateProvider){
+app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
-        .state('homapage', {
+        .state('homepage', {
             cache: cacheActive,
-            url: '/',
+            url: '/homepage',
             templateUrl: 'js/views/homepage/index.html',
             controller: 'homepageIndex'
     
@@ -23,4 +23,5 @@ app.config(function($stateProvider){
             templateUrl: 'js/views/item/list.html',
             controller: 'itemList'
         })
+        $urlRouterProvider.otherwise('/homepage')
 });
