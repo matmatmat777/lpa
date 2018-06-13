@@ -1,7 +1,7 @@
 'use strict';
 
 app
-    .controller('itemList', function ($scope, $ionicPopup, $http, $firebaseArray, $ionicModal) {
+    .controller('itemList', function ($scope, $ionicPopup, $http, $firebaseArray, $ionicModal, $cordovaCamera) {
 
         var rootRef = firebase.database().ref();
         $scope.items = $firebaseArray(rootRef.child('items'));
@@ -25,6 +25,11 @@ var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.br
                 title: 'ajouter une annonce',
                 scope: $scope,
                 buttons: [
+                    { text: 'photo',
+                    onTap: function(){
+                       $scope.takePicture();
+                    }   
+                },
                     { text: 'annuler' },
                     {
                         text: '<b>ajouter</b>',
@@ -75,6 +80,25 @@ var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.br
           });
           $scope.closeModal = function() {
             $scope.modal.hide();
+          };
+
+          $scope.takePicture = function() {
+            var options = {
+              quality: 75, // Qualité de l'image sauvée, valeur entre 0 et 100
+              destinationType: Camera.DestinationType.DATA_URL,
+              sourceType: Camera.PictureSourceType.CAMERA,
+              allowEdit: true,
+              encodingType: Camera.EncodingType.JPEG, // Format d'encodage : JPEG ou PNG
+              targetWidth: 300, // Largeur de l'image en pixel
+              targetHeight: 300, // Hauteur de l'image en pixel
+              saveToPhotoAlbum: false // Enregistrer l'image dans l'album photo du device
+            };
+        
+            $cordovaCamera.getPicture(options).then(function(imageData) {
+              $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            }, function(err) {
+              console.log(err);
+            });
           };
 
         

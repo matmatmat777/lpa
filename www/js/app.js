@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('starter', ['ionic', 'firebase'])
+var app = angular.module('starter', ['ionic', 'firebase', 'ngCordova'])
 
 .run(function($ionicPlatform, $location) {
   $ionicPlatform.ready(function() {
