@@ -1,35 +1,24 @@
 'use strict';
 
 app
-    .controller('itemList', function ($scope, $ionicPopup, $http, $firebaseArray, $ionicModal, $cordovaCamera) {
+    .controller('itemList', ['$scope', '$ionicPopup', '$http', '$firebaseArray', '$ionicModal', '$cordovaCamera', 'Auth', function ($scope, $ionicPopup, $http, $firebaseArray, $ionicModal, $cordovaCamera, Auth) {
 
         var rootRef = firebase.database().ref();
         $scope.items = $firebaseArray(rootRef.child('items'));
-
-        console.log("id",$scope.items.length);   
-
-
+        var syncArray = $firebaseArray(rootRef.child('items'));
+        //$scope.images = [];
         var max = 0;
-        $scope.addItem = function () {
-           //console.log("id",maxId);  
-           
-            /* var newItem = $scope.newItem = { Uid:"", id: max, title: "", description: "" };
-            var itemTemplate = '<input type="text" placeholder="titre" ng-model="newItem.title"><br/><input type="text" placeholder="username" ng-model="newItem.user.username"><br/><textarea ng-model="newItem.description" placeholder="description"></textarea>';
- */
 
-var newItem = $scope.newItem = { id: max, brand: "", model: "", price:"", description: "" };
-var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.brand"><input type="text" placeholder="modele" ng-model="newItem.model"><input type="text" placeholder="prix" ng-model="newItem.price"><input type="text" placeholder="prix" ng-model="newItem.kilometers"><br/><input type="text" placeholder="username" ng-model="newItem.user.username"><input type="text" placeholder="télephone" ng-model="newItem.user.phone"><br/><textarea ng-model="newItem.description" placeholder="description"></textarea>';
+        $scope.addItem = function () {
+
+            var newItem = $scope.newItem = { id: max, brand: "", model: "", price:"", description: "", image: "" };
+            var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.brand"><input type="text" placeholder="modele" ng-model="newItem.model"><input type="text" placeholder="prix" ng-model="newItem.price"><input type="text" placeholder="prix" ng-model="newItem.kilometers"><br/><input type="text" placeholder="username" ng-model="newItem.user.username"><input type="text" placeholder="télephone" ng-model="newItem.user.phone"><br/><textarea ng-model="newItem.description" placeholder="description"></textarea>';
 
             var myPopup = $ionicPopup.show({
                 template: itemTemplate,
                 title: 'ajouter une annonce',
                 scope: $scope,
                 buttons: [
-                    { text: 'photo',
-                    onTap: function(){
-                       $scope.takePicture();
-                    }   
-                },
                     { text: 'annuler' },
                     {
                         text: '<b>ajouter</b>',
@@ -39,6 +28,7 @@ var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.br
                                 e.preventDefault();
 
                             } else {
+                                $scope.takePicture();
                                 $scope.items.$add(newItem);
                                 max = max + 1;
                                 console.log("max",max);
@@ -51,8 +41,6 @@ var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.br
                 ]
 
             })
-
-
         };
 
         $scope.delete = function(id){
@@ -64,15 +52,11 @@ var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.br
         $scope.getdetails = function(id){
           //  console.log("itemid",id);
             $scope.currentItem = id;
-           console.log("itemid",id);
-            
+            console.log("itemid",id);
             $scope.modal.show();
-         
-            
-            
-          };
-          $ionicModal.fromTemplateUrl('js/views/item/one.html', {
-
+         };
+          
+        $ionicModal.fromTemplateUrl('js/views/item/one.html', {
             scope: $scope,
             animation: 'slide-in-up'
           }).then(function(modal) {
@@ -95,12 +79,11 @@ var itemTemplate = '<input type="text" placeholder="marque" ng-model="newItem.br
             };
         
             $cordovaCamera.getPicture(options).then(function(imageData) {
-              $scope.imgURI = "data:image/jpeg;base64," + imageData;
-            }, function(err) {
-              console.log(err);
+                syncArray.$add({image: imageData}).then(function() {
+                    alert("Image has been uploaded");
+                });
+            }, function(error) {
+                console.error(error);
             });
-          };
-
-        
-    })
-;
+          };    
+    }]);
